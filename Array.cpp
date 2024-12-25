@@ -17,3 +17,30 @@ public:
         }
     }
 };
+
+
+
+
+// Lesson
+
+
+// use set when we need to make an array with no duplicates
+// as set removes all the duplicates automatically
+// use this example to understand
+vector<int> findUnion(vector<int> &a, vector<int> &b) {
+    // Using a set to automatically handle duplicates
+    set<int> s;
+    
+    for(int num : a){
+        s.insert(num);
+    }
+    
+    for(int mun : b){
+        s.insert(mun);
+    }
+    
+    vector<int> ans(s.begin(), s.end());
+    
+    return ans;
+
+   }
