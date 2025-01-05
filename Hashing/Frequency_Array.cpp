@@ -16,3 +16,13 @@ vector<int> frequencyCount(vector<int>& arr) {
 
     return freq;
 }
+
+
+
+// hashing for strings
+
+ch - 'a' = index of that character in an array
+
+
+
+
