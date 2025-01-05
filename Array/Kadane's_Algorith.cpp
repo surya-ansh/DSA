@@ -43,3 +43,6 @@ If currentSum drops below zero, reset it to 0 (discard the current subarray).
 Result:
 
 At the end of the iteration, maxSum contains the maximum sum of any contiguous subarray.
+
+
+
