@@ -1,0 +1,27 @@
+1838. Frequency of the Most Frequent Element
+
+Good question for sliding window
+
+
+class Solution {
+public:
+    int maxFrequency(vector<int>& nums, int k) {
+        sort(nums.begin(), nums.end());
+        int l=0;
+        int ans = 0;
+        long cnt = 0;
+
+        for(int i=0; i<nums.size(); i++){
+            long temp = nums[i];
+            cnt += temp;
+
+            while((i-l+1)* temp - cnt > k){
+                cnt -= nums[l];
+                l++;
+            }
+
+            ans = max(ans, i-l+1);
+        }
+        return ans;
+    }
+};

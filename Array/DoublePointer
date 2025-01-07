@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) {
+        int pos = 0;
+        int ned = 1;
+
+        vector<int> ans(nums.size());
+
+        for(auto num : nums){
+            if(num > 0){
+                ans[pos] = num;
+                pos += 2;
+            }
+            else if(num < 0){
+                ans[ned] = num;
+                ned += 2;
+            }
+        }
+        
+        
+        return ans;
+    }
+};
+
+
+2149. Rearrange Array Elements by Sign
