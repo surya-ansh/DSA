@@ -1,0 +1,46 @@
+class Solution {
+public:
+    int sum(vector<int> weights){
+        int sum = 0;
+        for(auto num : weights){
+            sum += num;
+        }
+        return sum;
+    }
+
+    int daze(vector<int> weights, int mid){
+        int load = 0, days = 1;
+        for(auto num : weights){
+            if(load + num > mid){
+               days += 1;
+               load = num;
+            }
+            else{
+                load += num;
+            }
+
+        }
+        return days;
+    }
+
+    int shipWithinDays(vector<int>& weights, int days) {
+        int s = *max_element(weights.begin(),weights.end()), e = sum(weights);
+        int ans = 0;
+
+        while(s<=e){
+            int mid = (s + e)/2;
+
+            int aval = daze(weights, mid);
+
+            if(aval <= days){
+                e= mid - 1;
+                ans = mid;
+            }
+            else{
+                s = mid + 1;
+            }
+
+        }
+        return ans;
+    }
+};
