@@ -4,7 +4,6 @@ void dfs(vector<int> &ans, int i, vector<int> &vis, vector<vector<int>> adj){
         
         for(auto it : adj[i]){
             if(!vis[it]){
-                vis[it] = 1;
                 dfs(ans, it, vis, adj);
             }
         }
@@ -16,6 +15,7 @@ void dfs(vector<int> &ans, int i, vector<int> &vis, vector<vector<int>> adj){
     // Function to return a list containing the DFS traversal of the graph.
     vector<int> dfsOfGraph(vector<vector<int>>& adj) {
         int n = adj.size();
+        // visited array to track the nodes
         vector<int> vis(n,0);
         vector<int> ans;
         
