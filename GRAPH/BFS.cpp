@@ -1,13 +1,13 @@
 ector<int> bfsOfGraph(vector<vector<int>> &adj) {
         int n = adj.size();
-        // marking if the current node is visited
+        
         vector<int> vis(n, 0);
-        // answer vector
+        
         vector<int> bfs;
-        // pushing into queue
+        
         queue<int> q;
         q.push(0);
-        // marking the first element visited 
+        
         vis[0] = 1;
         while(!q.empty()){
             int node = q.front();
@@ -15,7 +15,7 @@ ector<int> bfsOfGraph(vector<vector<int>> &adj) {
             
             bfs.push_back(node);
             
-            // checking if the node has been visited or not
+            
             for(auto it : adj[node]){
                 if(!vis[it]){
                     q.push(it);
@@ -26,3 +26,31 @@ ector<int> bfsOfGraph(vector<vector<int>> &adj) {
         
         return bfs;
     }
+
+
+
+
+    class Solution {
+public:
+    long long minCost(vector<int>& arr, vector<int>& brr, long long k) {
+        int n = arr.size();
+        long long cost = 0;
+        
+        
+        sort(arr.begin(), arr.end());
+        sort(brr.begin(), brr.end());
+
+        
+        for (int i = 0; i < n; i++) {
+            cost += abs(arr[i] - brr[i]);  
+        }
+
+        
+        if ((arr[0] > 0 && brr[0] < 0) || (arr[0] < 0 && brr[0] > 0)) {
+            cost += k;  
+        }
+
+        
+        return cost;
+    }
+};

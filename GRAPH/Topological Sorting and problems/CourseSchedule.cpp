@@ -19,6 +19,7 @@ public:
         queue<int> q;
 
         for(int i=0; i<k; i++){
+            // putting the elements with indegree 0 into the queue
             if(indegree[i] == 0){
                 q.push(i);
             }
