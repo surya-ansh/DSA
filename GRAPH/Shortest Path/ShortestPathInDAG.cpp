@@ -10,6 +10,9 @@
 }
 
 vector<int> shortestPath(int V, int E, vector<vector<int>>& edges) {
+
+    // preparing adjacancy list 
+    // as the graph is directed so we will take pair of int and int
     vector<vector<pair<int, int>>> adj(V);
     for (auto it : edges) {
         int u = it[0];
@@ -19,6 +22,8 @@ vector<int> shortestPath(int V, int E, vector<vector<int>>& edges) {
     }
 
     vector<int> vis(V, 0);
+    // taking stack here
+    // as we have to traverse the graph in topological order
     stack<int> st;
 
     for (int i = 0; i < V; i++) {
@@ -37,13 +42,19 @@ vector<int> shortestPath(int V, int E, vector<vector<int>>& edges) {
             for (auto it : adj[node]) {
                 int u = it.first;
                 int wt = it.second;
+                // this is the way to check if the node is reachable or not
+                // intially we have stored the distance of all the nodes as 1e9
+                // so if the node is not reachable then the distance will be 1e9
+                // so we will not go in the if condition
+                // if the node is reachable then we will go in the if condition
                 if (dis[node] + wt < dis[u]) {
                     dis[u] = dis[node] + wt;
                 }
             }
         
     }
-    
+    // preparing the ans vector
+    // if the distance of the node is 1e9 then the node is not reachable
     vector<int> ans;
     for(auto it : dis){
         if(it == 1e9){
